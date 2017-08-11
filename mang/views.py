@@ -8,8 +8,8 @@ def background(request):
 		hits = post.hits
 		hits_list.append(hits)
 
-	most1hits = hits_list[0]
-	most2hits = hits_list[1]
+	most1hits = hits_list[1]
+	most2hits = hits_list[2]
 	if most1hits == most2hits:
 		filter_list = post_list.filter(hits = most1hits)
 		post1 = filter_list[0]
