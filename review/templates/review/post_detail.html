@@ -1,0 +1,93 @@
+{% extends "review/layout.html" %}
+{% load imagekit %}
+{% block title %} {{ post.title }} {% endblock %}
+
+{% block content %}
+
+
+<div class = 'container'>
+<h2>{{ post.title }}</h2>
+<br><span style="color:lightgray">
+{{ post.user }} / {{ post.updated_at }}  <span class ="pull-right">조회수 : {{ post.hits }}</span></span>
+<hr/>
+
+<br>
+<br>
+<div class = 'container'>
+{{ post.content|safe|linebreaks }}
+</div>
+</div>
+
+
+
+
+    <div align = 'center'>
+    {% if post.photo %}
+    <img src = "{{ post.photo.url }}" style = "width:400px; height:400px;"/>
+    {% endif %}
+    </div>
+
+<p align = 'center'><a href="{% url "review:post_like" post.id %}"><img src="http://cfile9.uf.tistory.com/image/217B4A4E513F144734FDF5" width = "100px" height = "100px"> {{ post.like_count }}</a></a></p>
+
+
+
+<div align = 'center'>
+<hr style="border:dashed 2px gray;"/>
+
+    <h3 style = "color-profile">Comments</h3>
+
+    {% for comment in comment_list %}
+        <li>
+        {{ comment.message }}
+        by {{ comment.author }}
+        <span style = "color:grey">at {{ comment.updated_at }}</span>
+        <a href="{% url "review:comment_edit" comment.id %}" onclick="return confirm('정말 수정하시겠습니까?')" class = "btn btn-primary">수정</a>
+    <a href="{% url "review:comment_delete" comment.id %}" onclick="return confirm('정말 삭제하시겠습니까?')" class = "btn btn-primary">삭제</a>
+        </li>
+    {% endfor %}
+
+
+    <div class="pagination">
+    <span class="step-links">
+        {% if comment_list.has_previous %}
+            {% if keyword %}
+            <a href="?keyword={{keyword}}&page={{ comment_list.previous_page_number }}" class = "btn btn-primary">previous</a>
+            {% else %}
+            <a href="?page={{ comment_list.previous_page_number }}" class = "btn btn-primary">previous</a>
+            {% endif %}
+        {% endif %}
+
+        <span class="current">
+            Page {{ comment_list.number }} of {{ comment_list.paginator.num_pages }}.
+        </span>
+
+        {% if comment_list.has_next %}
+            {% if keyword %}
+            <a href="?keyword={{keyword}}&page={{ comment_list.next_page_number }}" class = "btn btn-primary">next</a>
+            {% else %}
+            <a href="?page={{ comment_list.next_page_number }}" class = "btn btn-primary">next</a>
+            {% endif %}
+        {% endif %}
+    </span>
+</div>
+</div>
+
+
+    <form action = "" method = "post" class = "horizontal-form">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+        <input type = "submit" />
+    </form>
+
+<br>
+
+
+    <a href="{% url "review:post_list" %}" class = "btn btn-primary">글 목록</a>
+    <a href="{% url "review:post_edit" post.id %}" onclick="return confirm('정말 수정하시겠습니까?')" class = "btn btn-primary">수정</a>
+    <a href="{% url "review:post_delete" post.id %}" onclick="return confirm('정말 삭제하시겠습니까?')" class = "btn btn-primary">삭제</a>
+
+{% endblock %}
+    <!-- /.content-section-a -->
+

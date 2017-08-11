@@ -1,0 +1,136 @@
+{% extends "review/layout.html" %}
+{% block title %} 후기 게시판 {% endblock %}
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+    <h1>망했러 </h1>
+    <p>망한 후기 공유하기</p>
+    <p>
+        <a class="btn btn-lg btn-danger" href="http://blog.naver.com/jwlee2218">                    망했러 네이버 블로그 &raquo;
+        </a>
+    </p>
+</div>
+</div>
+
+
+<form action= "" method = "get">
+    <input type = "text" name = "keyword" value = "{{ keyword }}">
+    <input type = "submit" value = "검색" class="btn btn-basic"/>
+<a href = "{% url "review:post_new" %}" class = "btn btn-default pull-right">새 게시물 작성하기</a>
+</form>
+<br>
+
+
+
+<form action= "" method = "get">
+<a href = "{% url "review:tag_filter" '억울' %}"> <button type="button" class = "btn btn-danger">억울</button></a>
+<a href = "{% url "review:tag_filter" '당황' %}" class = "btn btn-warning">당황</a>
+<a href = "{% url "review:tag_filter" '우울' %}" class = "btn btn-danger">우울</a>
+<a href = "{% url "review:tag_filter" '슬픔' %}" class = "btn btn-warning">슬픔</a>
+<a href = "{% url "review:tag_filter" '짜증' %}" class = "btn btn-danger">짜증</a>
+</form>
+
+<table class="table table-hover table-striped">
+             <thead>
+                    <tr>
+
+                        <th>제목</th>
+                        <th>조회수</th>
+                        <th>좋아요</th>
+                        <th>글쓴이</th>
+                        <th>수정일자</th>
+                        <th>댓글수</th>
+                    </tr>
+            <tbody>
+
+<ul style = "border: 1px, border-color: #333">
+
+{% for post in best_list %}
+    <tr>
+
+        <td><a href = "{% url "review:post_detail" post.pk %}">
+            <span class="label label-info">
+                {{ post.tag_set }}
+            </span>
+             {{ post.title }}</a>
+        </td>
+        <td>{{ post.hits }}</td>
+        <td>{{ post.like_num }}</td>
+        <td>{{ post.user }}</td>
+        <td><small>at {{ post.updated_at }}</small></td>
+        <td>{{ post.comment_set.count }}</td>
+        </tr>
+{% endfor %}
+</tbody>
+
+
+<table class="table table-hover table-striped">
+             <thead>
+                    <tr>
+
+                        <th>제목</th>
+                        <th>조회수</th>
+                        <th>좋아요</th>
+                        <th>글쓴이</th>
+                        <th>수정일자</th>
+                        <th>댓글수</th>
+                    </tr>
+            <tbody>
+
+<ul style = "border: 1px, border-color: #333">
+
+{% for post in post_list %}
+    <tr>
+
+        <td><a href = "{% url "review:post_detail" post.pk %}">
+            <span class="label label-info">
+                {{ post.tag_set }}
+            </span>
+             {{ post.title }}</a>
+        </td>
+        <td>{{ post.hits }}</td>
+        <td>{{ post.like_num }}</td>
+        <td>{{ post.user }}</td>
+        <td><small>at {{ post.updated_at }}</small></td>
+        <td>{{ post.comment_set.count }}</td>
+        </tr>
+{% endfor %}
+</tbody>
+</table>
+
+
+<div align = 'center'>
+    <div class="pagination">
+        <span class="step-links">
+            {% if post_list.has_previous %}
+                {% if keyword %}
+                <a href="?keyword={{keyword}}&page={{ post_list.previous_page_number }}" class = "btn btn-primary">previous</a>
+                {% else %}
+                <a href="?page={{ post_list.previous_page_number }}" class = "btn btn-primary">previous</a>
+                {% endif %}
+            {% endif %}
+
+            <span class="current">
+                Page {{ post_list.number }} of {{ post_list.paginator.num_pages }}.
+            </span>
+
+            {% if post_list.has_next %}
+                {% if keyword %}
+                <a href="?keyword={{keyword}}&page={{ post_list.next_page_number }}" class = "btn btn-primary">next</a>
+                {% else %}
+                <a href="?page={{ post_list.next_page_number }}" class = "btn btn-primary">next</a>
+                {% endif %}
+            {% endif %}
+        </span>
+    </div>
+</div>
+
+
+{% endblock %}
+<!--
+{% for post in post_list %}
+    {# Each "contact" is a Contact model object. #}
+    {{ post.title }}<br />
+    ...
+{% endfor %}
+-->
