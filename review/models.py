@@ -16,7 +16,7 @@ class Post(models.Model):
 
     content = summer_fields.SummernoteTextField(default='',verbose_name='내용')
 
-    photo = models.ImageField(blank = True, upload_to = 'review/post')
+    photo = models.ImageField(blank = True, upload_to = 'review/post', verbose_name='대표 사진')
 
     tags = models.CharField(max_length = 20, blank = True)
 

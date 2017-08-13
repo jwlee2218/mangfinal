@@ -115,7 +115,7 @@
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
                     <h2 class="section-heading">About 망했러<br></h2>
-                    <p class="lead"></p>
+                    <p class="lead"><strong>"나만 안 되나?!" </strong><br> <br> 인터넷으로 정보를 얻는 사람이라면, 이런 고민을 할 수 밖에 없었을 겁니다. 망했러는 실패하는 모든 사람들을 위해 만들어졌습니다. 더 이상 외로워하지 마세요. 다 같이 실패를 공유해봅시다! </p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                     <img class="img-responsive" src='{% static "img/1.png" %}' alt="">
@@ -163,7 +163,10 @@
                     <div class="clearfix"></div>
 
                     <a href = "review/{{post1.id}}"><h2 class="section-heading">{{ post1.title }}</h2></a>
-                    <p class="lead">{{ post1.content|safe|linebreaks }}</p>
+                    <div style="height: 300px; overflow: auto;" >
+                    <table>
+                    <tr><td style="text-overflow: ellipsis; overflow: hidden">
+                    <p class="post">{{ post1.content|safe|linebreaks }}</p></td></tr></table></div>
                 </div>
                 <div class="col-lg-5 col-sm-pull-6  col-sm-6">
                     {% if post1.photo %}
@@ -188,8 +191,11 @@
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
 
-                    <a href = "review/{{post2.id}}"><h2 class="section-heading">{{ post2.title }}</h2></a>
-                    <p class="lead">{{ post2.content|safe   |linebreaks }}</p>
+                    <a href = "review/{{post2.id}}"><h2 class="section-heading">{{ post2.title }}</h2></a> 
+                    <div style="height: 300px; overflow: auto;" >
+                    <table>
+                    <tr><td style="text-overflow: ellipsis; overflow: hidden">
+                    <p class="post">{{ post2.content|safe|linebreaks }}</p></td></tr></table></div>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                     {% if post2.photo %}
