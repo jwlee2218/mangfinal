@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 """mang URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -32,7 +31,7 @@ urlpatterns = [
 
 ]
 
-=======
+
 """mang URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -66,5 +65,4 @@ urlpatterns = [
 
 ]
 
->>>>>>> 3cdaee27945e3f87e9bbc2f5ea38afa0b8873eea
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
