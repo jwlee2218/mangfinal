@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from.import views
+from mang import views
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^review/', include('review.urls',namespace = 'review')),
     url(r'^accounts/', include('accounts.urls')),
     url(r'^accounts/', include('allauth.urls')),
-    url(r'^summernote/', include('django_summernote.urls')),    
+    url(r'^summernote/', include('django_summernote.urls')),
 
 ]
 
