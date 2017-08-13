@@ -1,8 +1,8 @@
 django
-django_summernote
-django_extensions
-imagekit
+django-summernote
+django-extensions
+django-imagekit
 pillow
-django_allauth
+django-allauth
 
 
