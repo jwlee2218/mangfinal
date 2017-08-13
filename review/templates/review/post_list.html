@@ -1,36 +1,13 @@
 {% extends "review/layout.html" %}
+{% load static %}
 {% block title %} 후기 게시판 {% endblock %}
 {% block content %}
+
+
 <div class="container">
     <div class="jumbotron">
-    <h1>망했러 </h1>
-    <p>망한 후기 공유하기</p>
-    <p>
-        <a class="btn btn-lg btn-danger" href="http://blog.naver.com/jwlee2218">                    망했러 네이버 블로그 &raquo;
-        </a>
-    </p>
-</div>
-</div>
-
-
-<form action= "" method = "get">
-    <input type = "text" name = "keyword" value = "{{ keyword }}">
-    <input type = "submit" value = "검색" class="btn btn-basic"/>
-<a href = "{% url "review:post_new" %}" class = "btn btn-default pull-right">새 게시물 작성하기</a>
-</form>
-<br>
-
-
-
-<form action= "" method = "get">
-<a href = "{% url "review:tag_filter" '억울' %}"> <button type="button" class = "btn btn-danger">억울</button></a>
-<a href = "{% url "review:tag_filter" '당황' %}" class = "btn btn-warning">당황</a>
-<a href = "{% url "review:tag_filter" '우울' %}" class = "btn btn-danger">우울</a>
-<a href = "{% url "review:tag_filter" '슬픔' %}" class = "btn btn-warning">슬픔</a>
-<a href = "{% url "review:tag_filter" '짜증' %}" class = "btn btn-danger">짜증</a>
-</form>
-
-<table class="table table-hover table-striped">
+<h1 align="center"><font font face="impact"><img src='{% static "img/crown.png" %}' alt="" width="40px"> Best <font color="SlateGrey", font face="impact"><img src='{% static "img/crown.png" %}' alt="" width="40px"></h1></font></font><h5 align="center">좋아요 수가 가장 높은 게시물</h5><br>
+<table class="table table-hover table-striped" >
              <thead>
                     <tr>
 
@@ -41,9 +18,9 @@
                         <th>수정일자</th>
                         <th>댓글수</th>
                     </tr>
-            <tbody>
+            <tbody></tbody>
 
-<ul style = "border: 1px, border-color: #333">
+<ul style = "border: 1px, border-color: #eee">
 
 {% for post in best_list %}
     <tr>
@@ -61,7 +38,30 @@
         <td>{{ post.comment_set.count }}</td>
         </tr>
 {% endfor %}
-</tbody>
+</tbody></ul></tbody></thead></table>
+    
+</div>
+</div>
+
+
+<form action= "" method = "get">
+    <input type = "text" name = "keyword" value = "{{ keyword }}">
+    <input type = "submit" value = "검색" class="btn btn-basic"/>
+<a href = "{% url "review:post_new" %}" class = "btn btn-default pull-right">새 게시물 작성하기</a>
+</form>
+<br>
+
+
+
+<form action= "" method = "get">
+<a href = "{% url "review:tag_filter" '억울' %}"> <button type="button" class="btn btn-danger">억울</button></a>
+<a href = "{% url "review:tag_filter" '당황' %}" class = "btn btn-warning">당황</a>
+<a href = "{% url "review:tag_filter" '우울' %}" class = "btn btn-danger">우울</a>
+<a href = "{% url "review:tag_filter" '슬픔' %}" class = "btn btn-warning">슬픔</a>
+<a href = "{% url "review:tag_filter" '짜증' %}" class = "btn btn-danger">짜증</a>
+</form>
+
+
 
 
 <table class="table table-hover table-striped">
