@@ -2,7 +2,6 @@ django
 django_summernote
 django_extensions
 imagekit
-allauth
 pillow
 
 
