@@ -2,6 +2,7 @@ django
 django-summernote
 django-extensions
 django-imagekit
+imagekit
 pytz
 django-allauth
 pilkit
