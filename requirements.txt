@@ -4,4 +4,4 @@ django-extensions
 django-imagekit
 pytz
 django-allauth
-
+pilkit
