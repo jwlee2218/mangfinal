@@ -3,5 +3,5 @@ django-summernote
 django-extensions
 django-imagekit
 pytz
-
+allauth
 
