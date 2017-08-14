@@ -10,10 +10,13 @@ def background(request):
 		hits_list.append(hits)
 	
 	hits_list.sort(reverse=True)
-	most1hits = hits_list[0]
-	most2hits = hits_list[1]
-	post1 = Post.objects.get(hits = most1hits)
-	post2 = Post.objects.get(hits = most2hits)
+	try:
+		most1hits = hits_list[0]
+		most2hits = hits_list[1]
+		post1 = Post.objects.get(hits = most1hits)
+		post2 = Post.objects.get(hits = most2hits)
+	except:
+		pass
 	return render(request, 'layout.html',{'post1':post1, 'post2':post2,})
 
 def introduce(request):
