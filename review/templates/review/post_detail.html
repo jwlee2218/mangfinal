@@ -20,13 +20,6 @@
 
 
 
-
-    <div align = 'center'>
-    {% if post.photo %}
-    <img src = "{{ post.photo.url }}" style = "width:400px; height:400px;"/>
-    {% endif %}
-    </div>
-
 <p align = 'center'><a href="{% url "review:post_like" post.id %}"><img src="http://cfile9.uf.tistory.com/image/217B4A4E513F144734FDF5" width = "100px" height = "100px"> {{ post.like_count }}</a></a></p>
 
 

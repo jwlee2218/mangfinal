@@ -8,7 +8,8 @@ def background(request):
 	for post in post_list:
 		hits = post.hits
 		hits_list.append(hits)
-
+	
+	hits_list.sort(reverse=True)
 	most1hits = hits_list[0]
 	most2hits = hits_list[1]
 	post1 = Post.objects.get(hits = most1hits)
