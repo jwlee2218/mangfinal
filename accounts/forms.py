@@ -10,7 +10,6 @@ class SignupForm(UserCreationForm):
         user = super().save()
         profile = Profile.objects.create(
             user = user,
-            nickname = self.cleaned_data['nickname'],
             )
         return user
 
