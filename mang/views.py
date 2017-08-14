@@ -20,5 +20,4 @@ def background(request):
 	return render(request, 'layout.html',{'post1':post1, 'post2':post2,})
 
 def introduce(request):
-	from django.shortcuts import render
-	from review.models import Post, Comment
+	return render(request, 'introduce.html')
