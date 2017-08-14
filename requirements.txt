@@ -2,6 +2,6 @@ django
 django-summernote
 django-extensions
 django-imagekit
-pillow
+
 
 
